@@ -11,7 +11,7 @@ A small bash script to split pdfs using GhostScript with a more friendly experie
 
 The script takes 2+ arguments. The first argument is the name of the pdf file that you want to split. (This can be a path)
 
-The rest of the arguments are the page numbers of the last part of each section. For example;
+The rest of the arguments are the page numbers of the last page of each section. For example;
 
 ```
 ./pdfSplitter.sh FILENAME.pdf 2 4 5
