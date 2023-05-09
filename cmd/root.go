@@ -19,7 +19,8 @@ var (
 	rootCmd    = &cobra.Command{
 		Use:   "pdfSplitter",
 		Short: "A simple PDF Splitter, use -h, --help for usage info",
-		Long:  `PLACE HOLDER`,
+		Long: `pdfSplitter; Provide at least two arguments
+The first one should be the relative address of the PDF you want to split followed by any number of numbers as the page separators.`,
 
 		Run: func(cmd *cobra.Command, args []string) {
 			fileName := args[0]
@@ -40,7 +41,6 @@ var (
 				"-sOutputFile=", //#7
 				fileName,
 			}
-
 			for counter, endPage := range args {
 				rev, err := ghostscript.GetRevision()
 				if err != nil {
@@ -90,6 +90,7 @@ func init() {
 
 	rootCmd.Flags().StringVarP(&outputFile, "output", "o", "Part{}.pdf", "The name of the output files, must contain '{}' as a placeholder for the counter.")
 	rootCmd.Flags().BoolVarP(&deleteFlag, "delete", "d", false, "Include if you want the original file to be deleted.")
+
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 
