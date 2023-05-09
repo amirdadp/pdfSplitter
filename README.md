@@ -1,20 +1,28 @@
 # pdfSplitter
-A small bash script to split pdfs using GhostScript with a more friendly experience.
+A small CLI (<i>Originally a Bash script, now re-written in Go</i>) to split pdfs using GhostScript with a more friendly experience.
 (I made this program to help me spliting assignment questions to submit to Crowdmark platform.)
 
 
 # Requirements
-* Ghostscript
-
+* [Ghostscript](https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs9550): Any version between 9.10 and 9.55.0
+* [Go](https://go.dev/dl/)
 
 # How to use
 
-The script takes 2+ arguments. The first argument is the name of the pdf file that you want to split. (This can be a path)
-
-The rest of the arguments are the page numbers of the last page of each section. For example;
-
+1. Download the latest Release from the `Releases` tab. 
+2. `unzip` the file and `cd` into the unzipped directory.
+3. Build from the source code
 ```
-./pdfSplitter.sh FILENAME.pdf 2 4 5
+$ go build main.go 
+```
+4. The binary is ready, enjoy! 
+
+# Guide
+- You can use the `--help` or `-h` flags to check the manual.
+
+- Here is a small example: 
+```
+./pdfSplitter FILENAME.pdf 2 4 5
 ```
  would split `FILENAME.pdf` into three files: 
  
