@@ -58,7 +58,7 @@ The first one should be the relative address of the PDF you want to split follow
 				if err := gs.Init(gsArgs); err != nil {
 					panic(err)
 				}
-				startPage = endPage
+				startPage = endPage + 1
 				func() {
 					gs.Exit()
 					gs.Destroy()
