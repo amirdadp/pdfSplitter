@@ -24,7 +24,7 @@ The first one should be the relative address of the PDF you want to split follow
 
 		Run: func(cmd *cobra.Command, args []string) {
 			fileName := args[0]
-			startPage := "1"
+			startPage := 1
 			args = args[1:]
 			fpTemplate := "-dFirstPage="
 			lpTemplate := "-dLastPage="
@@ -51,14 +51,19 @@ The first one should be the relative address of the PDF you want to split follow
 				if err != nil {
 					panic(err)
 				}
+				startPageStr := strconv.Itoa(startPage)
 
-				gsArgs[5] = fpTemplate + startPage
+				gsArgs[5] = fpTemplate + startPageStr
 				gsArgs[6] = lpTemplate + endPage
 				gsArgs[7] = outTemplate + "\"" + strings.Replace(outputFile, "{}", strconv.Itoa(counter+1), 1) + "\""
 				if err := gs.Init(gsArgs); err != nil {
 					panic(err)
 				}
-				startPage = endPage
+				tmp, errr := strconv.Atoi(endPage)
+				if errr != nil {
+					panic(errr)
+				}
+				startPage = tmp + 1
 				func() {
 					gs.Exit()
 					gs.Destroy()
