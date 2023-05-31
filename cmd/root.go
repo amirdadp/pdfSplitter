@@ -55,7 +55,7 @@ The first one should be the relative address of the PDF you want to split follow
 
 				gsArgs[5] = fpTemplate + startPageStr
 				gsArgs[6] = lpTemplate + endPage
-				gsArgs[7] = outTemplate + "\"" + strings.Replace(outputFile, "{}", strconv.Itoa(counter+1), 1) + "\""
+				gsArgs[7] = outTemplate +  strings.Replace(outputFile, "{}", strconv.Itoa(counter+1), 1) 
 				if err := gs.Init(gsArgs); err != nil {
 					panic(err)
 				}
